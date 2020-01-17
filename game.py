@@ -5,7 +5,7 @@ test_board = ['#', f'{content}|', f'{content}|', f'{content}|', f'{content}|', f
               f'{content}|', f'{content}|', f'{content}|']
 
 
-# печатает
+# print a board
 def print_board(board):
     line_1 = f'{board[1]} {board[2]} {board[3]}'
     line_2 = f'{board[4]} {board[5]} {board[6]}'
@@ -16,7 +16,7 @@ def print_board(board):
     print(line_3)
 
 
-# принимает Х или О. Выбирает будет ли игрок играть за крестики или за нолики
+# choose X or O for each player
 def player_input():
     while True:
         player_1_type = input('Player 1. Choose X or O:')
@@ -26,12 +26,12 @@ def player_input():
             return player_1_type, player_2_type
 
 
-# вместо клетки подставляет Х или О
+# put Х or О instead of the board cell
 def place_marker(board, marker, position):
     board[position] = marker
 
 
-# проверяет победителя
+# check for the winner
 def win_check(board, marker):
     line_1 = f'{board[1]} {board[2]} {board[3]}'
     line_2 = f'{board[4]} {board[5]} {board[6]}'
@@ -45,12 +45,12 @@ def win_check(board, marker):
         return True
 
 
-# выбирает кто ходит первый
+# choose who goes first
 def choose_first():
     return random.randint(1, 2)
 
 
-# проверяет на наличие свободного места на поле на той позиции, которую передал игрок
+# check if the chosen position is free or not
 def space_check(board, position):
     if board[position] != 'X' and board[position] != 'O':
         return True
@@ -58,7 +58,7 @@ def space_check(board, position):
         return False
 
 
-# проверяет заполнена ли доска или нет
+# check if the board is full or not
 def full_check_board(board):
     counter = 0
     for cell in board:
@@ -70,7 +70,7 @@ def full_check_board(board):
         return False
 
 
-# спрашивает куда будет игрок ходить дальше
+# ask the player for the next position
 def player_choice(board):
     player_position = int(input('Choose next position:'))
     if space_check(board, player_position):
@@ -79,7 +79,7 @@ def player_choice(board):
         print('Position is already chosen')
 
 
-# спрашивает хочет ли игрок играть снова
+# ask the player to play again
 def replay():
     again = input('Do you want to play again? Answer \'Yes\' or \'No\':')
     if again == 'Yes':
@@ -88,7 +88,7 @@ def replay():
         return False
 
 
-# .......................................ИГРА.........................................................................
+# the game itself
 print('Welcome to Tic Tac Toe!')
 
 while True:
